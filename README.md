@@ -1,4 +1,4 @@
-# GenreSurf
+# GenreTree
 A fluid, user-controlled means of discovering music.
 
 There are two primary intentions that I have with this project.

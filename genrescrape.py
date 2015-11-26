@@ -1,9 +1,7 @@
 import requests
 import csv
-import cgi
 import httplib
 import urllib2
-import feedparser
 from BeautifulSoup import BeautifulSoup
 
 
@@ -23,15 +21,6 @@ httplib.HTTPConnection._http_vsn = 10
 httplib.HTTPConnection._http_vsn_str = 'HTTP/1.0'
 url = 'http://rateyourmusic.com/rgenre/'
 
-"""
-feedparser.parse(url)
-
-
-
-req = urllib2.Request(url)
-filedescriptor = urllib2.urlopen(req)
-img = filedescriptor.read()
-"""
 response = requests.get(url)
 
 
@@ -40,7 +29,18 @@ html = response.content
 soup = BeautifulSoup(html)
 divcontent = soup.find('div', attrs={'id': 'content'})
 
-print divcontent.prettify()
+
+"""
+Grab each one with either the style background string or A tag with title
+"""
+
+i = 1;
+
+for categoryOne in divcontent.findAll('div', attrs={'style': 'background:#f8f8f8;border:#bbb 1px solid;padding:6px;margin:10px;'})
+	print categoryOne.prettify
+
+
+#print divcontent.prettify()
 
 
 
